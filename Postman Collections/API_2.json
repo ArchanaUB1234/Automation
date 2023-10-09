@@ -1,0 +1,70 @@
+{
+	"info": {
+		"_postman_id": "fc8ebcef-0e0e-46d0-8818-65e8ab9c8462",
+		"name": "API automation Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login API_fork",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "381d6843-f2de-467a-adb1-c6e4249c5638",
+						"exec": [
+							"console.log(\"Hello.12345\")\r",
+							"console.log(\"Creating pull request\")\r",
+							"console.log(\"Created fork-archanaub\");\r",
+							"let a=1;\r",
+							"let b=2;\r",
+							"let c=10;\r",
+							"let d=10;\r",
+							"let e=1;\r",
+							"let f=40;\r",
+							"let i=70;\r",
+							"let add=f+i;\r",
+							"console.log(add);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "4c40e1d5-5e32-403a-abf5-7932f3d2bad4",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "yahoo1.com"
+			},
+			"response": []
+		},
+		{
+			"name": "fork_request",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a2d0df7c-cb4c-48cb-8388-82a4ffc93c1a",
+						"exec": [
+							"console.log(\"Fork_request\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "25e8d7fb-f646-4aa0-9461-088a6731d329",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "yahoo.com"
+			},
+			"response": []
+		}
+	]
+}
