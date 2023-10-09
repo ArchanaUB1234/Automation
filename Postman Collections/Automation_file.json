@@ -22,7 +22,9 @@
 							"let d=10;\r",
 							"let e=1;\r",
 							"let f=40;\r",
-							"let i=70;"
+							"let i=70;\r",
+							"let add=f+i;\r",
+							"console.log(add);"
 						],
 						"type": "text/javascript"
 					}
