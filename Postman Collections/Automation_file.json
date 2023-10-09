@@ -24,7 +24,9 @@
 							"let f=40;\r",
 							"let i=70;\r",
 							"let add=f+i;\r",
-							"console.log(add);"
+							"console.log(add);\r",
+							"let sub=c-d;\r",
+							"console.log(sub);"
 						],
 						"type": "text/javascript"
 					}
