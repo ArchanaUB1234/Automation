@@ -26,7 +26,8 @@
 							"let add=f+i;\r",
 							"console.log(add);\r",
 							"let sub=c-d;\r",
-							"console.log(sub);"
+							"console.log(sub);\r",
+							"console.log(\"Github saved 1\");"
 						],
 						"type": "text/javascript"
 					}
