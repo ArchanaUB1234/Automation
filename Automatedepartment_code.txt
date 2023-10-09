@@ -1,0 +1,225 @@
+Request ----------------------------->
+
+https://staging.247software.com/department?data={"department_name":"okllllllll",
+"description":"This department is used to handle security, fighting events.",
+"facility_ids":[
+    {
+    "facility_id":"eyJpdiI6ImFHOVVObmRxV0ZJMVNVRmllV3RQUWc9PSIsInZhbHVlIjoiRU56V1hlOCt1NUdaVCtsd3NYaUc1QT09IiwibWFjIjoiODdiMzYwZDJiYWQwNGIyN2I4M2U5YzdhNzhlYmNlOTkyOTkxMzUwYjM0YjE5MzQyY2E3OTJkNDNlNjZhOWUyNCJ9"},
+    {"facility_id":"eyJpdiI6ImFHOVVObmRxV0ZJMVNVRmllV3RQUWc9PSIsInZhbHVlIjoiY1VDaDRYOHhZTXRNY1VsWW9NRjZGQT09IiwibWFjIjoiYTZmZjYzNzg3NjhhNzE1NzNjYjZlYjFmNjQxNjkwZTAxMzE4ZjBmMGQ5ODgyZjkyNjg5ODZiMmVjZGJjNDIyMCJ9"},
+    {"facility_id":"eyJpdiI6ImFHOVVObmRxV0ZJMVNVRmllV3RQUWc9PSIsInZhbHVlIjoiVnpudEF3N2FGdWozbFhka2pzZ3U2Zz09IiwibWFjIjoiNWY2MjIyODBmNjA2MGZjODg3OGU4YmMzN2E0ZGRkNWEzYzJlYWQ0MjNlZGJkMjRlZWU3MzA3MGYxZjA0M2E5YSJ9"}],
+    "parent_department_id":"",
+    "conversations":"1",
+    "guest_list":"0",
+    "ims":"0",
+    "communicator":"0",
+    "request_tracker":"0",
+    "task_manager":"0",
+    "activity_log":"0",
+    "lnf":"0","cmms":"0",
+    "checkpoint":"0",
+    "map_color":"%23181DA5",
+    "icon":"",
+    "icon_display_name":"",
+    "icon_color":"",
+    "is_font_awesome_icon":"0",
+    "blink_after":"",
+    "blink_value_unit_for_department":"",
+    "staff_scheduling":"0","id":"eyJpdiI6ImFHOVVObmRxV0ZJMVNVRmllV3RQUWc9PSIsInZhbHVlIjoidVBHbm9QZlhvUVJDSVZlSDZNeDBSQT09IiwibWFjIjoiMjFkMDRkMmJmYTg1YjRkZmZmODFhYzEwYzI2ZTFmNjVhYTk5M2UzMmRiM2Y1NzIzN2YyZjY5NmNjYWQxNzM2NSJ9"}
+
+
+
+
+
+
+
+************************************************************************************************************************************************************************************************************************************************************************************************************************
+
+pre-requist  ---->
+
+
+console.clear();
+
+// getdepartment API call
+pm.sendRequest({
+  url: "https://staging.247software.com/department/getData",
+  method: 'POST',
+  headers: {
+    // Add any necessary headers here
+    // For example:
+    'Authorization': 'Bearer YOUR_ACCESS_TOKEN'
+  }
+}, function (err, response) {
+  if (err) {
+    console.error(err);
+    // Handle error if needed
+  } else {
+
+    //console.log(response.json());
+    let res = response.json();
+    let deptName=res.data;
+  
+     pm.collectionVariables.set("departmentName",deptName);
+
+    console.log("Collection variable department ====> ",pm.collectionVariables.get("departmentName"))
+
+  }
+});
+    //console.log(res);
+    //console.log(res.records[accountId].account_name);
+/*    pm.collectionVariables.set("account_name",res.records[accountId].account_name);
+    console.log(pm.collectionVariables.get("account_name")) 
+    console.log("Module_name",res.records[accountId].module_data);
+
+
+  // get module permission details
+    for(i=0;i < res.records[accountId].module_data.length;i++)
+    {
+        if( res.records[accountId].module_data[i].module_name=="IMS" &&  res.records[accountId].module_data[i].status==1)
+        {
+        console.log(res.records[accountId].module_data[i]);
+        }
+    }
+  }
+});
+*/
+
+
+
+
+************************************************************************************************************************************************************************************************************************************************************************************************************************
+
+Test  ------>
+
+
+console.log("Test cases started - ");
+
+// verify if department is present in request body
+pm.test("Verify department name is present in request.", function ()
+{
+    let requestDepartmentName;   
+    let data = pm.request.toJSON().url.query.filter((x)=>x.key == 'data')[0]?.value;
+    //let departmentName;
+     console.log("***********************",data);
+    if(data && data.trim().length>0) {
+      //  departmentName = JSON.parse(decodeURIComponent(data))["department_name"];
+        requestDepartmentName = JSON.parse(decodeURIComponent(data))["department_name"];
+        pm.collectionVariables.set("new_departmentName", requestDepartmentName);
+        console.info("Department ===========>>> value", pm.collectionVariables.get("new_departmentName"));
+    }
+    console.info("<<<<<<<<<<<<", pm.collectionVariables.get("new_departmentName"))
+    pm.expect(requestDepartmentName).not.eq(undefined);
+    pm.expect(requestDepartmentName.trim()).not.eq("");
+ 
+});
+
+// verify if facility is present in request body
+pm.test("Verify Facility is present in request.", function ()
+{
+    let data = pm.request.toJSON().url.query.filter((x)=>x.key == 'data')[0]?.value;
+    let facilityID;
+   
+    if(data) 
+        {
+        facilityID= JSON.parse(decodeURIComponent(data))["facility_ids"];
+        console.info("Facility ===========>>> value", facilityID);
+        }
+    pm.expect(facilityID).not.eq(undefined);
+   // console.log(facilityID.length)
+    let facilty_legth=facilityID.length;
+    pm.expect(facilty_legth).to.not.eql(0);
+ 
+});
+
+
+// verify if module is selected in request body
+pm.test("Verify module is selected in request.", function ()
+{
+    let data = pm.request.toJSON().url.query.filter((x)=>x.key == 'data')[0]?.value;
+    let isModulesPresent;
+    if(data) 
+        {
+      data = JSON.parse(decodeURIComponent(data));
+      isModulesPresent = data.conversations || data.guest_list || data.ims || data.task_manager || data.checkpoint || data.request_tracker || data.activity_log || data.lnf || data.cmms;
+      console.info("Module Status==== > ", isModulesPresent);
+
+     
+ 
+        }   
+    pm.expect(isModulesPresent).to.eql("1");    
+});
+
+
+// Verify if department already exist or not.
+pm.test("Verify department name is already present in Account.", function ()
+{
+   let deptName=pm.collectionVariables.get("new_departmentName");
+   let all_deptName=pm.collectionVariables.get("departmentName");
+
+   for(i=0;i<all_deptName.length;i++)
+   {
+       if(all_deptName[i].department_name == deptName)
+       {
+           console.log("*********In the if loop *************")
+           pm.expect(deptName).not.eq(all_deptName[i].department_name);
+       }
+   }
+});
+
+// Verify status code is 200.
+pm.test("Verify API should executed.", function ()
+{
+    if(pm.response.to.have.status(200))
+    {
+        console.log("API executed scuessfully.")
+    }
+});
+
+pm.test("Verify if record added successfully", function ()
+{
+    let res = pm.response.json();
+    
+    pm.expect(pm.response.json().status_code).to.eql(201);
+});
+
+/*pm.test("Verify if Department name added or not.", function ()
+{
+
+  // Get the value of the query parameter
+   let value= pm.request;
+   // value = pm.request.query[0].get("data");
+    // let value= pm.request.getQueryParameter("data");
+   //console.info("===========>>> value", JSON.stringify(pm.request.url.query));
+
+  // If the value is not empty, convert it to JSON
+  console.log(value);
+
+  // value.department_name
+  
+
+})
+
+
+
+/*
+pm.test("Response time is less than 10sec", function () {
+    pm.expect(pm.response.responseTime).to.be.below(11000);
+});
+
+pm.test("Verify App name is correct.", function () {
+
+   let account_id= pm.collectionVariables.get('account_id');
+   let account_name= pm.collectionVariables.get('account_name');
+   let app_name= account_id+ " - "+account_name;
+  
+  // console.log(app_name);
+   let response1 = pm.response.json();
+  
+  // console.log(response1.body.name);
+  
+   if(app_name == response1.body.name)
+  {
+  console.log("App name is correct.");
+  }
+
+});
+*/
