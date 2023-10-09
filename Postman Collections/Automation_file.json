@@ -27,7 +27,8 @@
 							"console.log(add);\r",
 							"let sub=c-d;\r",
 							"console.log(sub);\r",
-							"console.log(\"Github saved 1\");"
+							"console.log(\"Github saved 1\");\r",
+							"console.log(\"Github saved 2\");"
 						],
 						"type": "text/javascript"
 					}
