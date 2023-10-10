@@ -1,7 +1,7 @@
 {
 	"info": {
 		"_postman_id": "fc8ebcef-0e0e-46d0-8818-65e8ab9c8462",
-		"name": "API automation Collection1234",
+		"name": "API automation Collection1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
@@ -67,6 +67,41 @@
 				"method": "GET",
 				"header": [],
 				"url": "yahoo.com"
+			},
+			"response": []
+		},
+		{
+			"name": "New_change_API",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "6e4f97a1-85d9-4074-8c55-fd82672dc1cf",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "204310d9-633b-49bb-9764-f728878c6d66",
+						"exec": [
+							"console.log(\"Hiii\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"id": "41f10172-497a-435c-84dc-bca17cc7fdf0",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": ""
 			},
 			"response": []
 		}
