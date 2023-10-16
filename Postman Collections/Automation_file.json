@@ -41,7 +41,9 @@
 							"t=14;\r",
 							"t=16;\r",
 							"t=17;\r",
-							"console.log(\"Take pull\");"
+							"console.log(\"Take pull\");\r",
+							"console.log(\"Github saved 1234\");\r",
+							"console.log(\"Github saved 22345\");"
 						],
 						"type": "text/javascript"
 					}
@@ -67,7 +69,8 @@
 						"id": "a2d0df7c-cb4c-48cb-8388-82a4ffc93c1a",
 						"exec": [
 							"console.log(\"Fork_request\");\r",
-							"console.log(\"Fork_request-16th oct\");"
+							"console.log(\"Fork_request-16th oct\");\r",
+							"console.log(\"Fork_request-16th oct-2\");"
 						],
 						"type": "text/javascript"
 					}
