@@ -39,9 +39,9 @@
 							"t=11;\r",
 							"t=13;\r",
 							"t=14;\r",
-							"t=15;\r",
-							"t=15;\r",
-							"t=15;"
+							"t=16;\r",
+							"t=17;\r",
+							"console.log(\"Take pull\");"
 						],
 						"type": "text/javascript"
 					}
